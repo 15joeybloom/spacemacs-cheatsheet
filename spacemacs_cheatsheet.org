@@ -1,0 +1,91 @@
+#+TITLE: Spacemacs Cheatsheet
+#+AUTHOR: Joey Bloom
+
+Here is a non-comprehensive list of some of the most essential spacemacs
+commands. If something is missing, I either forgot about it or don't use it
+often.
+
+This document assumes you're familiar with vim. You can be dangerous in
+spacemacs by just using your vim skills; most vim commands will work just fine.
+
+Spacemacs evil mode has normal mode, insert mode, visual mode, etc. just like
+vim. Except they're called *state*s instead of modes, since mode has other
+meanings in emacs.
+
+C means control.
+
+M means meta. I use option on mac and alt on everything else.
+
+SPC means the spacebar.
+
+Point means the place where your cursor is.
+
+* Basics
+
+| Keybinding         | Description                                                                                                                                           |
+|--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| =SPC SPC= or =M-x= | Look up a command by name                                                                                                                             |
+| =SPC h d k=        | Look up a command by keybinding                                                                                                                       |
+| =SPC h d v=        | Look up a variable by name                                                                                                                            |
+| =C-g=              | Cancel a keybinding if you make a mistake                                                                                                             |
+| =C-z=              | Toggle holy mode. You can tell if you're in holy mode by looking in the bottom left corner. Blue means holy mode, green means evil mode normal state. |
+
+| Keybinding  | Command name                        | Description                                                                                                                                                                      |
+|-------------+-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| =SPC f e d= | spacemacs/find-dotfile              | Edit your ~/.spacemacs file - your personal spacemacs configuration. Feel free to steal mine in whole or in part. https://github.com/15joeybloom/dotfiles/tree/master/.spacemacs |
+| =SPC f e R= | spacemacs/sync-configuration-layers | Reload your ~/.spacemacs file after you make changes                                                                                                                             |
+| =SPC q Q=   | spacemacs/kill-emacs                | Quit spacemacs                                                                                                                                                                   |
+| =SPC b b=   | list-buffers                        | View all open buffers                                                                                                                                                            |
+| =SPC b d=   | spacemacs/kill-this-buffer          | Kill the current buffer                                                                                                                                                          |
+| =SPC f f=   | helm-find-files                     | Open a file by name (or switch to that buffer if it's already open)                                                                                                              |
+| =SPC f r=   | helm-recentf                        | View recent files                                                                                                                                                                |
+
+* CIDER (clojure REPL interaction)
+
+| Keybinding | Command name                 | Description                                                                                                         |
+|------------+------------------------------+---------------------------------------------------------------------------------------------------------------------|
+| =, '=      | cider-jack-in                | Start a clojure REPL and connect CIDER to it. Need to do this before anything else will work.                       |
+| =, s q=    | cider-quit                   | Disconnect from and kill your REPL.                                                                                 |
+| =, s s=    | cider-switch-to-repl-buffer  | Toggle to and from the REPL output buffer                                                                           |
+| =, e e=    | cider-eval-last-sexp         | Evaluate the sexp before point                                                                                      |
+| =, e f=    | cider-eval-defun-at-point    | Evaluate the top-level form around point                                                                            |
+| =, e b=    | cider-eval-buffer            | Evaluate the whole buffer                                                                                       |
+| =, t t=    | cider-test-run-focused-test  | Run the `deftest` at point                                                                                          |
+| =, t n=    | cider-test-run-ns-tests      | Run all tests in the current namespace                                                                              |
+| =, t p=    | cider-test-run-project-tests | Run all tests in the current project                                                                                |
+| =g d=      | spacemacs/jump-to-definition | Go to the definition of the symbol at point.                                                                        |
+| =C-o=      | evil-jump-backward           | Go to the older position in the jump list. This has nothing specifically to do with CIDER but works well with =g d= |
+
+* Stuctural editing
+
+Vanilla emacs users will typically use a package called =paredit=. Spacemacs comes with =smartparens=.
+
+By default, any =smartparens= command will leave you in lisp state (pink bottom
+left corner). To return to normal state (green bottom left corner), press =ESC=.
+I set the variable =evil-lisp-state-enter-lisp-state-on-command= to =nil= so
+that I am always returned immediately to normal state without having to press
+=ESC=.
+
+| Keybinding | Command name           | Description                              |
+|------------+------------------------+------------------------------------------|
+| =SPC k s=  | sp-forward-slurp-sexp  | Slurp forwards i.e. =(a¦) b= => =(a b)=  |
+| =SPC k S=  | sp-backward-slurp-sexp | Slurp backwards i.e. =a (b¦)= => =(a b)= |
+| =SPC k b=  | sp-forward-barf-sexp   | Barf forwards i.e. =(a¦ b)= => =(a) b=   |
+| =SPC k B=  | sp-backward-barf-sexp  | Barf backwards i.e. =(a¦ b)= => =a (b)=  |
+| =SPC k r=  | sp-raise-sexp          | Raise i.e. =(a¦ b)= => =a b=             |
+| =d a (=    |                        | Delete s-expression around point         |
+
+* Magit
+
+=SPC g s= to open the magit status buffer. All of these commands start from that buffer.
+
+| Keybinding | Description                                                                     |
+|------------+---------------------------------------------------------------------------------|
+| =TAB=      | Toggle expand or collapse the section at point                                  |
+| =s=        | Stage the section under point                                                   |
+| =u=        | Unstage the section under point                                                 |
+| =x=        | Kill the section under point                                                    |
+| =c c=      | Commit                                                                          |
+| =l l=      | Magit log                                                                       |
+| =b b=      | Switch to a branch                                                              |
+| =b c=      | Create a branch (use this when checking out a remote branch for the first time) |
