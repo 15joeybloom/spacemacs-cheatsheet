@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-06-11 Thu 03:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spacemacs Cheatsheet</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Joey Bloom" />
+</head>
+<body>
+<div id="content">
+<h1 class="title">Spacemacs Cheatsheet</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3449541">Basics</a></li>
+<li><a href="#org65ab15e">CIDER (clojure REPL interaction)</a></li>
+<li><a href="#orgbe6a605">Stuctural editing</a></li>
+<li><a href="#org36c661c">Magit</a></li>
+</ul>
+</div>
+</div>
+<p>
+Here is a non-comprehensive list of some of the most essential spacemacs
+commands. If something is missing, I either forgot about it or don't use it
+often.
+</p>
+
+<p>
+This document assumes you're familiar with vim. You can be dangerous in
+spacemacs by just using your vim skills; most vim commands will work just fine.
+</p>
+
+<p>
+Spacemacs evil mode has normal mode, insert mode, visual mode, etc. just like
+vim. Except they're called *state*s instead of modes, since mode has other
+meanings in emacs.
+</p>
+
+<p>
+C means control.
+</p>
+
+<p>
+M means meta. I use option on mac and alt on everything else.
+</p>
+
+<p>
+SPC means the spacebar.
+</p>
+
+<p>
+Point means the place where your cursor is.
+</p>
+
+<div id="outline-container-org3449541" class="outline-2">
+<h2 id="org3449541">Basics</h2>
+<div class="outline-text-2" id="text-org3449541">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC SPC</code> or <code>M-x</code></td>
+<td class="org-left">Look up a command by name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC h d k</code></td>
+<td class="org-left">Look up a command by keybinding</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC h d v</code></td>
+<td class="org-left">Look up a variable by name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-g</code></td>
+<td class="org-left">Cancel a keybinding if you make a mistake</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-z</code></td>
+<td class="org-left">Toggle holy mode. You can tell if you're in holy mode by looking in the bottom left corner. Blue means holy mode, green means evil mode normal state.</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command name</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC f e d</code></td>
+<td class="org-left">spacemacs/find-dotfile</td>
+<td class="org-left">Edit your ~/.spacemacs file - your personal spacemacs configuration. Feel free to steal mine in whole or in part. <a href="https://github.com/15joeybloom/dotfiles/tree/master/.spacemacs">https://github.com/15joeybloom/dotfiles/tree/master/.spacemacs</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC f e R</code></td>
+<td class="org-left">spacemacs/sync-configuration-layers</td>
+<td class="org-left">Reload your ~/.spacemacs file after you make changes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC q Q</code></td>
+<td class="org-left">spacemacs/kill-emacs</td>
+<td class="org-left">Quit spacemacs</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC b b</code></td>
+<td class="org-left">list-buffers</td>
+<td class="org-left">View all open buffers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC b d</code></td>
+<td class="org-left">spacemacs/kill-this-buffer</td>
+<td class="org-left">Kill the current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC f f</code></td>
+<td class="org-left">helm-find-files</td>
+<td class="org-left">Open a file by name (or switch to that buffer if it's already open)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC f r</code></td>
+<td class="org-left">helm-recentf</td>
+<td class="org-left">View recent files</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org65ab15e" class="outline-2">
+<h2 id="org65ab15e">CIDER (clojure REPL interaction)</h2>
+<div class="outline-text-2" id="text-org65ab15e">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command name</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>, '</code></td>
+<td class="org-left">cider-jack-in</td>
+<td class="org-left">Start a clojure REPL and connect CIDER to it. Need to do this before anything else will work.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, s q</code></td>
+<td class="org-left">cider-quit</td>
+<td class="org-left">Disconnect from and kill your REPL.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, s s</code></td>
+<td class="org-left">cider-switch-to-repl-buffer</td>
+<td class="org-left">Toggle to and from the REPL output buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, e e</code></td>
+<td class="org-left">cider-eval-last-sexp</td>
+<td class="org-left">Evaluate the sexp before point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, e f</code></td>
+<td class="org-left">cider-eval-defun-at-point</td>
+<td class="org-left">Evaluate the top-level form around point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, e b</code></td>
+<td class="org-left">cider-eval-buffer</td>
+<td class="org-left">Evaluate the whole buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, t t</code></td>
+<td class="org-left">cider-test-run-focused-test</td>
+<td class="org-left">Run the `deftest` at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, t n</code></td>
+<td class="org-left">cider-test-run-ns-tests</td>
+<td class="org-left">Run all tests in the current namespace</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>, t p</code></td>
+<td class="org-left">cider-test-run-project-tests</td>
+<td class="org-left">Run all tests in the current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g d</code></td>
+<td class="org-left">spacemacs/jump-to-definition</td>
+<td class="org-left">Go to the definition of the symbol at point.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-o</code></td>
+<td class="org-left">evil-jump-backward</td>
+<td class="org-left">Go to the older position in the jump list. This has nothing specifically to do with CIDER but works well with <code>g d</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgbe6a605" class="outline-2">
+<h2 id="orgbe6a605">Stuctural editing</h2>
+<div class="outline-text-2" id="text-orgbe6a605">
+<p>
+Vanilla emacs users will typically use a package called <code>paredit</code>. Spacemacs comes with <code>smartparens</code>.
+</p>
+
+<p>
+By default, any <code>smartparens</code> command will leave you in lisp state (pink bottom
+left corner). To return to normal state (green bottom left corner), press <code>ESC</code>.
+I set the variable <code>evil-lisp-state-enter-lisp-state-on-command</code> to <code>nil</code> so
+that I am always returned immediately to normal state without having to press
+<code>ESC</code>.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command name</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC k s</code></td>
+<td class="org-left">sp-forward-slurp-sexp</td>
+<td class="org-left">Slurp forwards i.e. <code>(a¦) b</code> <code>&gt; =(a b)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k S</code></td>
+<td class="org-left">sp-backward-slurp-sexp</td>
+<td class="org-left">Slurp backwards i.e. <code>a (b¦)</code> <code>&gt; =(a b)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k b</code></td>
+<td class="org-left">sp-forward-barf-sexp</td>
+<td class="org-left">Barf forwards i.e. <code>(a¦ b)</code> <code>&gt; =(a) b</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k B</code></td>
+<td class="org-left">sp-backward-barf-sexp</td>
+<td class="org-left">Barf backwards i.e. <code>(a¦ b)</code> <code>&gt; =a (b)</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC k r</code></td>
+<td class="org-left">sp-raise-sexp</td>
+<td class="org-left">Raise i.e. <code>(a¦ b)</code> <code>&gt; =a b</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d a (</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Delete s-expression around point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org36c661c" class="outline-2">
+<h2 id="org36c661c">Magit</h2>
+<div class="outline-text-2" id="text-org36c661c">
+<p>
+<code>SPC g s</code> to open the magit status buffer. All of these commands start from that buffer.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">Toggle expand or collapse the section at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">Stage the section under point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">Unstage the section under point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>x</code></td>
+<td class="org-left">Kill the section under point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c c</code></td>
+<td class="org-left">Commit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l l</code></td>
+<td class="org-left">Magit log</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b b</code></td>
+<td class="org-left">Switch to a branch</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b c</code></td>
+<td class="org-left">Create a branch (use this when checking out a remote branch for the first time)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Joey Bloom</p>
+<p class="date">Created: 2020-06-11 Thu 03:41</p>
+</div>
+</body>
+</html>
